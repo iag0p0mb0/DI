@@ -9,7 +9,7 @@ class MainWindow():
     def onButtonClicked(self, cell):
         #pass
         message = "Has hecho click en la celda " + cell.title
-        messagebox.showinfo(("Información --> " + message))
+        messagebox.showinfo(("Información --> ", message))
 
     def __init__(self, root):
         

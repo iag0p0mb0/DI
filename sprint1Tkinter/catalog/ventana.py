@@ -1,6 +1,7 @@
 from tkinter import ttk
 import tkinter as tk #importamos toda la libreria de tkinter
 from cell import Cell
+from PIL import Image, ImageTk
 from tkinter import messagebox
 
 
@@ -12,18 +13,30 @@ class MainWindow():
         messagebox.showinfo(("Información --> ", message))
 
     def __init__(self, root):
-        
+
         root.title("MainWindow")
 
+        # self.cells = [
+        #     Cell("Tucán", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\6-lugares-donde-puedes-ver-animales-exoticos-6.jpg"),
+        #     Cell("Lobo", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\animales-destacada.jpg"),
+        #     Cell("Oso perezoso", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\animales-felices-portada-1280x720x80xX.jpg"),
+        #     Cell("Perro y gato", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\dia-de-los-animales.jpg"),
+        #     Cell("Mapache", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\proteger-a-los-animales.jpg")
+        # ]
+
         self.cells = [
-            Cell("Tucán", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\6-lugares-donde-puedes-ver-animales-exoticos-6.jpg"),
-            Cell("Lobo", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\animales-destacada.jpg"),
-            Cell("Oso perezoso", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\animales-felices-portada-1280x720x80xX.jpg"),
-            Cell("Perro y gato", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\dia-de-los-animales.jpg"),
-            Cell("Mapache", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\edited\\proteger-a-los-animales.jpg")
+            Cell("Tucán", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\unedited\\6-lugares-donde-puedes-ver-animales-exoticos-6.jpg"),
+            Cell("Lobo", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\unedited\\animales-destacada.jpg"),
+            Cell("Oso perezoso", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\unedited\\animales-felices-portada-1280x720x80xX.jpg"),
+            Cell("Perro y gato", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\unedited\\dia-de-los-animales.jpg"),
+            Cell("Mapache", "C:\\msys64\\home\\iagop\\DWES\\sprint1Tkinter\\catalog\\data\\unedited\\proteger-a-los-animales.jpg")
         ]
 
         for i, cell in enumerate(self.cells):
+            img = Image.open(cell.path)#Con esto lo que hacemos es abrir la imagen de la posición en la que estemos, es decir, con este for vamos a pasar por todas las imagenes en el self.cell
+            img1 = img.resize((100, 100), Image.LANCZOS)#Aquí lo que hacemos es reescalar la imagen a 100 x 100
+            cell.image_tk = ImageTk.PhotoImage(img1)
+
             label = tk.Label(root, image = cell.image_tk, text = cell.title, compound = tk.BOTTOM)
             label.grid(row = i, column = 0)
             label.bind("Button-1", lambda event, cell = cell: self.onButtonClicked(cell))#escucha eventos sobre los widgets que programamos

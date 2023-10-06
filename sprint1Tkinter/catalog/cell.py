@@ -1,5 +1,5 @@
 import tkinter as tk
-from PIL import Image, ImageTk
+from PIL import ImageTk
 
 class Cell:
     def __init__(self,title,path):

@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Tucán",
+        "description": "El tucán es un ave tropical con pico largo y colorido.",
+        "image_url": "https://raw.githubusercontent.com/iag0p0mb0/DI/main/sprint1Tkinter/catalog/data/edited/6-lugares-donde-puedes-ver-animales-exoticos-6.jpg"
+    },
+    {
+        "name": "Lobo",
+        "description": "El lobo es un carnívoro social de pelaje variado, con mirada intensa y aullidos melódicos.",
+        "image_url": "https://raw.githubusercontent.com/iag0p0mb0/DI/main/sprint1Tkinter/catalog/data/edited/animales-destacada.jpg"
+    },
+    {
+        "name": "Oso perezoso",
+        "description": "El oso perezoso es un mamífero tranquilo de pelaje áspero que vive en los árboles.",
+        "image_url": "https://raw.githubusercontent.com/iag0p0mb0/DI/main/sprint1Tkinter/catalog/data/edited/animales-felices-portada-1280x720x80xX.jpg"
+    },
+    {
+        "name": "Perro y gato",
+        "description": "El perro es leal y versátil; el gato es independiente y ágil. Ambos son queridos como mascotas en todo el mundo.",
+        "image_url": "https://raw.githubusercontent.com/iag0p0mb0/DI/main/sprint1Tkinter/catalog/data/edited/dia-de-los-animales.jpg"
+    },
+    {
+        "name": "Mapache",
+        "description": "El mapache es un mamífero nocturno con máscara facial y habilidades astutas.",
+        "image_url": "https://raw.githubusercontent.com/iag0p0mb0/DI/main/sprint1Tkinter/catalog/data/edited/proteger-a-los-animales.jpg"
+    }
+]

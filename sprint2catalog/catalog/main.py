@@ -7,4 +7,3 @@ if __name__ == "__main__":
     # app = MainWindow(root)
     app = LoadingWindow(root)
     root.mainloop()
-    

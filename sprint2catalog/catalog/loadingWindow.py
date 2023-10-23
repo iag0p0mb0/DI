@@ -10,10 +10,19 @@ class LoadingWindow:
         self.root = root
         # título de la ventana
         self.root.title("Cargando...")
-        # dimensiones de la ventana
-        self.root.geometry("170x120") # Define el ancho y la altura de la ventana
+        # # dimensiones de la ventana
+        # self.root.geometry("170x120") # Define el ancho y la altura de la ventana
         # posibilidad de redimensión de la misma
         self.root.resizable(False, False) # Este comando permite indicar si la ventana se puede redimensionar tanto en ancho como en altura
+
+        widthWindow = 330
+        heightWindow = 140
+        self.root.geometry(f"{int(widthWindow)}x{int(heightWindow)}")
+        # si implementamos este código, ancho y alto de la ventana serán números accesibles por winfo:
+        self.root.config(width=widthWindow, height=heightWindow)
+        x = (self.root.winfo_screenwidth() - self.root.winfo_reqwidth())/2
+        y = (self.root.winfo_screenheight() - self.root.winfo_reqheight())/2
+        self.root.geometry(f"+{int(x)}+{int(y)}")
 
         # creamos etiqueta para mostrar un texto
         self.label = tk.Label(self.root, text="Cargando datos...", font=("Arial", 14)) # con font definimos el tipo y tamaño ded letra

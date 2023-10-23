@@ -35,6 +35,17 @@ class MainWindow():
             cell = Cell(name,image_url,description)
             #añadimos la celda a la lista 
             self.cells.append(cell)
+
+        # ancho y alto iguales para hacer la ventana cuadrada:
+        widthWindow = 200
+        heightWindow = 450
+        self.root.geometry(f"{int(widthWindow)}x{int(heightWindow)}")
+        # si implementamos este código, ancho y alto de la ventana serán números accesibles por winfo:
+        self.root.config(width=widthWindow, height=heightWindow)
+        x = (self.root.winfo_screenwidth() - self.root.winfo_reqwidth())/2
+        y = (self.root.winfo_screenheight() - self.root.winfo_reqheight())/2
+        self.root.geometry(f"+{int(x)}+{int(y)}")
+
         #recorremos la lista de celdas para que se muestran en la ventana principal
         for i, cell in enumerate (self.cells):
             label = ttk.Label(root, image = cell.img, text = cell.name, compound = tk.BOTTOM)

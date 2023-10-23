@@ -1,5 +1,5 @@
 from tkinter import Tk
-from ventana import MainWindow
+# from ventana import MainWindow
 from loadingWindow import LoadingWindow
 
 if __name__ == "__main__":

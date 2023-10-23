@@ -1,9 +1,10 @@
+import tkinter as tk
 import threading
 import requests
-import tkinter as tk
 from ventana import MainWindow
 
-class LoadingWindow():
+class LoadingWindow:
+    json_data=[]
     #iniciamos el constructor
     def __init__(self, root):
         self.root = root
@@ -28,8 +29,16 @@ class LoadingWindow():
 
         self.update_progress_circle() 
 
+        self.finished = False
+
+        self.check_thread()
+
         self.thread = threading.Thread(target=self.fetch_json_data)
         self.thread.start()
+
+        #comprobamos que el hilo esta activo y si es asi comprobamos con la funcion creada
+        if self.thread.is_alive():
+            self.check_thread()
 
     def draw_progress_circle(self, progress):
         self.canvas.delete("progress")# elimina el objeto con la tag progress
@@ -51,14 +60,22 @@ class LoadingWindow():
     def fetch_json_data(self):
             response = requests.get("https://raw.githubusercontent.com/iag0p0mb0/DI/main/resources/catalog.json")
             if response.status_code == 200:
-                self.json_data = response.json()
-                self.root.destroy() # con esto cerramos la ventana porque la destruimos
-                launch_main_window(self.json_data)
-
+                # self.json_data = response.json()
+                # self.root.quit() # con esto cerramos la ventana
+                # launch_main_window(self.json_data)
             # En este if lo que hacemos es que si el código es 200, el cual significa okay, metemos el json en json_data y 
             # salimos para ejecutar la ventana principal  
+                self.json_data = response.json()
+                self.finished=True
+    #comprueba si el hilo finaliza o no, si lo hace instanciamos main_window
+    def check_thread(self):
+        if self.finished:
+            self.root.destroy()
+            launch_main_window(self.json_data)
+        else:
+            self.root.after(100, self.check_thread)
 
 def launch_main_window(json_data):
     root = tk.Tk()
-    app = MainWindow(root, json_data)
+    app = MainWindow(root, json_data)# esto nos manda a la clase MainWindow de ventana.py
     root.mainloop()

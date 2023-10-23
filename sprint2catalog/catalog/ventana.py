@@ -1,24 +1,17 @@
 from tkinter import ttk
+from tkinter import messagebox
 import tkinter as tk #importamos toda la libreria de tkinter
 from cell import Cell
-from PIL import Image, ImageTk
-from tkinter import messagebox
 from detail_window import detailWindow
-##
-import requests
-from PIL import Image , ImageTk
-from io import BytesIO
-import json
-import threading
 
 
 class MainWindow():
-
-    def onButtonClicked(self, cell):
-       detailWindow(cell)
+        
+    def onButtonClicked(self):
+        #detailWindow(cell)
+        messagebox.showinfo("Acerca del desarrollador", "Nombre: Iago Pombo\nEdad: 19")  
 
     def __init__(self, root, json_data):
-        
         root.title("MainWindow")
 
         self.root = root
@@ -51,3 +44,15 @@ class MainWindow():
             label = ttk.Label(root, image = cell.img, text = cell.name, compound = tk.BOTTOM)
             label.grid(row = i, column = 0)
             label.bind("<Button-1>", lambda event, cell = cell: self.onButtonClicked(cell))
+
+        # Crear una barra de menús
+        barra_menus = tk.Menu()
+        menu_ayuda = tk.Menu(barra_menus, tearoff=False)
+        # Agregarlo a la barra
+        menu_ayuda.add_command(
+        label="Acerca de",
+        command=self.onButtonClicked
+        )
+        barra_menus.add_cascade(menu=menu_ayuda, label="Acerca de")
+        root.config(menu=barra_menus)  
+        root.mainloop()

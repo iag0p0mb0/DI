@@ -26,9 +26,9 @@ class MainWindow():
             description = animales.get("description")
             image_url = animales.get("image_url")
             # Creamos un nuevo hilo que ejecutará la función self.load_image_url
-            #guardar en una celda los datos del json
+            # guardar en una celda los datos del json
             cell = Cell(name,image_url,description)
-            #añadimos la celda a la lista 
+            # añadimos la celda a la lista 
             self.cells.append(cell)
 
         # ancho y alto iguales para hacer la ventana cuadrada:
@@ -43,7 +43,7 @@ class MainWindow():
         # Crear una barra de menús
         barra_menus = tk.Menu()
         menu_ayuda = tk.Menu(barra_menus, tearoff=False)
-        # Agregarlo a la barra
+        # Agrega una opción "Ayuda" al menú
         menu_ayuda.add_command(
         label="Ayuda",
         command=self.onButtonClickedAcercaDe
@@ -56,6 +56,7 @@ class MainWindow():
         self.scrollbar = tk.Scrollbar(root, orient="vertical", command=self.canvas.yview, width=15)
         self.scrollable_frame = tk.Frame(self.canvas)
 
+        # Configuración de la barra de desplazamiento
         self.scrollable_frame.bind(
             "<Configure>",
             lambda e: self.canvas.configure(
@@ -75,9 +76,8 @@ class MainWindow():
             label.grid(row = i, column = 0)
             label.bind("<Button-1>", lambda event, cell = cell: self.onButtonClickedDetailWindow(cell))
 
-
+        # Coloca la barra de desplazamiento y la ventana en la ventana principal
         self.canvas.grid(row = 0, column = 0, sticky="nsew")
         self.scrollbar.grid(row = 0, column = 1, sticky="ns")
-
         root.grid_rowconfigure(0, weight=1)
         root.grid_columnconfigure(0, weight=1)

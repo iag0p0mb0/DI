@@ -1,0 +1,23 @@
+{
+    "Fácil": [
+        "sol",
+        "luna",
+        "gato",
+        "flor",
+        "agua"
+    ],
+    "Normal": [
+        "espejismo",
+        "murciélago",
+        "territorio",
+        "precisión",
+        "enigmático"
+    ],
+    "Difícil": [
+        "biodiversidad",
+        "electrodoméstico",
+        "inconmensurable",
+        "revolucionario",
+        "desarrollador"
+    ]
+}

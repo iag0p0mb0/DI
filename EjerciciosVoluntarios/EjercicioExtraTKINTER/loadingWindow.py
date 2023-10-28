@@ -30,9 +30,9 @@ class LoadingWindow:
         self.root.geometry(f"+{int((self.root.winfo_screenwidth()-self.width)/2)}+{int((self.root.winfo_screenheight()-self.height)/2)}")
 
         #creamos un canvas con texto y barra de carga
-        self.canvas = tk.Canvas(self.root, background="navy", highlightthickness=0, width=self.width, height=self.height)
+        self.canvas = tk.Canvas(self.root, background="white", highlightthickness=0, width=self.width, height=self.height)
         self.canvas.pack()
-        self.canvas.create_text((self.width/2, 98), text="Cargando las imágenes y palabras...", font=("System", 12), fill="lightgray", anchor="center", tags="texto")
+        self.canvas.create_text((self.width/2, 98), text="Cargando las imágenes y palabras...", font=("System", 12), fill="black", anchor="center", tags="texto")
         #dibujamos la barra de carga:
         self.update_bar()
 
@@ -44,3 +44,35 @@ class LoadingWindow:
 
         self.root.mainloop()
 
+    def draw_bar(self):
+        self.canvas.create_line((42+self.ini, self.height/2), (42+self.fin, self.height/2), fill="black", width=8, tags="linea")
+
+    def update_bar(self):
+        #actualizamosinicio y fin para cada cuadrado de la barra:
+        if self.ini < 228:
+            self.ini += 10
+            self.fin = self.ini + 8
+
+        self.draw_bar()
+        self.root.after(500, self.update_bar)
+    
+    def check_thread(self):
+        #hace que si las descargas se acabaron, esta ventana se cierra
+        if self.palabrasFinish & self.imagesFinish:
+            self.root.destroy()
+        else:
+            #esta comprobación espera a que acabe la barra de carga:
+            self.root.after(5000, self.check_thread)
+    
+    def fetch_json_data(self):
+        #descarga de palabras.json:
+        response_palabras = requests.get("https://github.com/iag0p0mb0/DI/blob/main/EjerciciosVoluntarios/EjercicioExtraTKINTER/resources/palabras.json")
+        if response_palabras.status_code == 200:
+            self.palabras_json = response_palabras.json()
+            self.palabras_finish = True
+        #descargar y guardar imágenes en lista de Objetos Image:
+        response_images = requests.get("https://raw.githubusercontent.com/iag0p0mb0/DI/main/EjerciciosVoluntarios/EjercicioExtraTKINTER/resources/ahorcado.json")
+        if response_palabras.status_code == 200:
+            for i in range(7):
+                self.gameImages.append(ImageDownloader(response_images.json().get(f"{int(i)}_error")))
+            self.images_finish = True

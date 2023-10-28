@@ -6,5 +6,5 @@ import requests
 
 class ImageDownloader:
     def __init__(self, url):
-        response = requests.get(url)
-        self.img = Image.open(BytesIO(response.content))
+        response_images = requests.get(url)
+        self.img = Image.open(BytesIO(response_images.content))

@@ -7,7 +7,7 @@ class ShowGameWindow:
     width = 800
     height = 400
 
-    def __init__(self, choice, images, palabras_json):
+    def __init__(self, choice, gameImages, palabras_json):
         self.root = tk.Tk()
         self.root.title("Juego ahorcado")
 
@@ -32,7 +32,7 @@ class ShowGameWindow:
         self.intentos = ""
 
         #selección aleatoria de palabra a adivinar:
-        index = randint(0,len(palabras_json(choice))-1)
+        index = randint(0,len(palabras_json[choice])-1)
         self.palabra = palabras_json[choice][index]
 
         #inizialización de huecos:
@@ -41,10 +41,10 @@ class ShowGameWindow:
             self.huecos.append('_ ')
 
         #guardado de imágenes como ImageTk:
-        self.images = []
+        self.gameImages = []
         for i in range(7):
-            img = ImageTk.PhotoImage(images[i].img)
-            self.images.append(img)
+            img = ImageTk.PhotoImage(gameImages[i].img)
+            self.gameImages.append(img)
 
         #dibujado de elementos:
         self.draw_window()
@@ -124,7 +124,7 @@ class ShowGameWindow:
         self.canvas4.pack(fill="both", expand=tk.YES)
 
         #label de imagen
-        label1 = tk.Label(self.canvas1, image=self.images[self.fallos], highlightthickness=0, border=0)
+        label1 = tk.Label(self.canvas1, image=self.gameImages[self.fallos], highlightthickness=0, border=0)
         label1.pack(pady=30)
         
         #label para huecos

@@ -13,10 +13,10 @@ class LoadingWindow:
     imagesFinish = False
 
     #seleccionamos las dimensiones de la pantalla de carga
-    width = 300
-    height = 300
+    width = 320
+    height = 240
 
-    ini = -10
+    ini = -12
     fin = 0
 
     def __init__(self):
@@ -33,7 +33,8 @@ class LoadingWindow:
         self.canvas = tk.Canvas(self.root, background="white", highlightthickness=0, width=self.width, height=self.height)
         self.canvas.pack()
         self.canvas.create_text((self.width/2, 98), text="Cargando las imágenes y palabras...", font=("System", 12), fill="black", anchor="center", tags="texto")
-        #dibujamos la barra de carga:
+    
+        self.canvas.create_rectangle((38, self.height/2-8), (self.width-38, self.height/2+8), width=2, outline="black")#dibujamos la barra de carga:
         self.update_bar()
 
         #comprobamos la descarga del json
@@ -66,7 +67,7 @@ class LoadingWindow:
     
     def fetch_json_data(self):
         #descarga de palabras.json:
-        response_palabras = requests.get("https://github.com/iag0p0mb0/DI/blob/main/EjerciciosVoluntarios/EjercicioExtraTKINTER/resources/palabras.json")
+        response_palabras = requests.get("https://raw.githubusercontent.com/iag0p0mb0/DI/main/EjerciciosVoluntarios/EjercicioExtraTKINTER/resources/palabras.json")
         if response_palabras.status_code == 200:
             self.palabras_json = response_palabras.json()
             self.palabras_finish = True
@@ -74,5 +75,5 @@ class LoadingWindow:
         response_images = requests.get("https://raw.githubusercontent.com/iag0p0mb0/DI/main/EjerciciosVoluntarios/EjercicioExtraTKINTER/resources/ahorcado.json")
         if response_palabras.status_code == 200:
             for i in range(7):
-                self.gameImages.append(ImageDownloader(response_images.json().get(f"{int(i)}_error")))
+                self.gameImages.append(ImageDownloader(response_images.json().get(f"{int(i)}")))
             self.images_finish = True

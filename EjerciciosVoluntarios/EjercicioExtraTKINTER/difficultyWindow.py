@@ -43,7 +43,7 @@ class Difficulty:
             font=("Arial",14),
             activeforeground="black",
             activebackground="orange",
-            name="medio",
+            name="normal",
             command=lambda:self.buttonClick(button2.cget("text"))
         )
         button3 = tk.Button(
@@ -80,11 +80,11 @@ class Difficulty:
     #click del botón
     def buttonClick(self, button_name):
         if button_name == "DIFÍCIL":
-            self.choice = "dificil"
+            self.choice = "Difícil"
         elif button_name == "MEDIO":
-            self.choice = "medio"
+            self.choice = "Normal"
         elif button_name == "FÁCIL":
-            self.choice = "facil"
+            self.choice = "Fácil"
         else:
             self.choice = "salir"
         self.root.destroy()

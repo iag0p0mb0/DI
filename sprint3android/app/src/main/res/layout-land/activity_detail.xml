@@ -37,8 +37,8 @@
         app:layout_constraintBottom_toBottomOf="@id/imageView1"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:text="descripción"
-        android:textSize="30sp"
+        android:text="Un monstruo con cuernos, un ojo, pequeño y ancho es una criatura verdaderamente inquietante.. Sus cuernos son retorcidos y afilados, sobresaliendo de su cabeza como lanzas retorcidas, y parecen estar hechos de un material oscuro y puntiagudo.\nEl rasgo más distintivo de este monstruo es su ojo único. Este ojo observa con una mirada penetrante y malevolente."
+        android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/textDescription"></TextView>
     

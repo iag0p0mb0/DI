@@ -13,8 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="15dp"
         android:layout_marginStart="15dp"
-        android:text="Título"
-        android:textSize="60sp"
+        android:text="Rayo McQueen"
+        android:textSize="40sp"
         android:id="@+id/textTitle"></TextView>
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -26,7 +26,7 @@
         android:layout_marginStart="15dp"
         android:scaleType="centerCrop"
         android:id="@+id/imageView1"
-        android:src="@drawable/ic_monster"></de.hdodenhof.circleimageview.CircleImageView>
+        android:src="@drawable/rayo_mcqueen"></de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
         android:layout_width="0dp"
@@ -37,11 +37,11 @@
         app:layout_constraintBottom_toBottomOf="@id/imageView1"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:text="Un monstruo con cuernos, un ojo, pequeño y ancho es una criatura verdaderamente inquietante.. Sus cuernos son retorcidos y afilados, sobresaliendo de su cabeza como lanzas retorcidas, y parecen estar hechos de un material oscuro y puntiagudo.\nEl rasgo más distintivo de este monstruo es su ojo único. Este ojo observa con una mirada penetrante y malevolente."
+        android:text="Rayo McQueen es un personaje ficticio de la franquicia de películas de animación de Disney y Pixar llamada 'Cars'. Es un coche de carreras de color rojo brillante con el número 95 en sus puertas y el logotipo de 'Rust-eze Medicated Bumper Ointmen' en su capó."
         android:textSize="20sp"
         android:textAlignment="center"
         android:id="@+id/textDescription"></TextView>
-    
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

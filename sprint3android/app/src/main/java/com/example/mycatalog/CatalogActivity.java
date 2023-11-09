@@ -19,6 +19,7 @@ public class CatalogActivity extends AppCompatActivity {
         navegarAlDetalleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //intent y startActivity que inicializan la actividad de DetailActivity, al pulsar el botón de la pantalla CatalogActivity.
                 Intent intent = new Intent(context, DetailActivity.class);//Creamos un intent para poder nombrarlo en la función de StartActivity
                 startActivity(intent);
             }

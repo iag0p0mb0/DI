@@ -21,7 +21,7 @@ public class AnimalViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         // Inicialización de las variables miembro con los elementos de la vista
-        textView = (TextView) itemView.findViewById(R.id.animals_name_text_view);
+        textView = (TextView) itemView.findViewById(R.id.animal_text_view);
         imageView = (ImageView) itemView.findViewById(R.id.animal_image_view);
     }
 

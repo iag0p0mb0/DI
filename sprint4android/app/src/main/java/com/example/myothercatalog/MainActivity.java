@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -66,6 +67,18 @@ public class MainActivity extends AppCompatActivity {
 
                         // Configurar un LinearLayoutManager para el RecyclerView
                         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+                        // Configurar el oyente de clics después de haber establecido el adaptador y el LayoutManager
+                        adapter.setOnItemClickListener(new AnimalRecyclerViewAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(int position) {
+                                AnimalData clickedAnimal = allAnimals.get(position);
+                                // Iniciar la nueva actividad
+                                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                                // Puedes pasar datos adicionales a la nueva actividad si es necesario
+                                // intent.putExtra("clave", valor);
+                                startActivity(intent);
+                            }
+                        });
                     }
                 },
                 new Response.ErrorListener() {

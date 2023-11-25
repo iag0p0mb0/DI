@@ -4,18 +4,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
+        android:id="@+id/animal_image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/animal_image_view"
-        app:layout_constraintTop_toTop="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></ImageView>
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
-        android:id="@+id/animals_name_text_view"
+        android:id="@+id/animal_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/animal_image_view"
-        app:layout_constraintBottom_toBottomOf="@id/animal_image_view"
-        app:layout_constraintStart_toEndOf="@id/animal_image_view"
-        app:layout_constraintEnd_toEndOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="@+id/animal_image_view"
+        app:layout_constraintBottom_toBottomOf="@+id/animal_image_view"
+        app:layout_constraintStart_toEndOf="@+id/animal_image_view"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

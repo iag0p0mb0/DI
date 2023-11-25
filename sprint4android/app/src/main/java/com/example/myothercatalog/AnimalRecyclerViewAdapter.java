@@ -15,6 +15,14 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalViewHo
     private List<AnimalData> alltheData;
     // Actividad asociada al adaptador
     private Activity activity;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
     // Constructor que recibe la lista de datos y la actividad
     public AnimalRecyclerViewAdapter(List<AnimalData> dataSet, Activity activity) {
         this.alltheData = dataSet;
@@ -36,6 +44,16 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalViewHo
         AnimalData dataInPositionToBeRendered = alltheData.get(position);
         // Llamar al método showData del ViewHolder para mostrar los datos en la vista
         holder.showData(dataInPositionToBeRendered, activity);
+        final int adapterPosition = holder.getAdapterPosition();
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null && adapterPosition != RecyclerView.NO_POSITION) {
+                    mListener.onItemClick(adapterPosition);
+                }
+            }
+        });
     }
     // Método que devuelve la cantidad total de elementos en la lista de datos
     @Override

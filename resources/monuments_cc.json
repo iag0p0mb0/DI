@@ -1,0 +1,22 @@
+[
+    {
+        "rating": "1",
+        "name": "Torre de Hércules",
+        "imageURL": "https://i.pinimg.com/originals/78/a0/bd/78a0bd9c129fd6129470329a42b5889b.jpg"
+    },
+    {
+        "rating": "2",
+        "name": "Plaza de María Pita",
+        "imageURL": "https://image.arrivalguides.com/x/18/66c347e447ce83e71865c787c8063f5b.jpg"
+    },
+    {
+        "rating": "3",
+        "name": "Obelisco",
+        "imageURL": "https://1.bp.blogspot.com/_eSlw8TaJ72I/TTyf7TS6vaI/AAAAAAAAAHQ/y6b4aIeRwFw/s1600/turismo+057.JPG"
+    },
+    {
+        "rating": "4",
+        "name": "Millenium",
+        "imageURL": "http://2.bp.blogspot.com/-y_buZPbyw7A/UBafCuG_SLI/AAAAAAAABBY/5LrZARqDZQ8/s1600/ObeliscoMillenium.jpg"
+    },
+]
